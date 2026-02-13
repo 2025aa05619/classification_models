@@ -1,0 +1,7 @@
+Model,Accuracy,AUC,Precision,Recall,F1,MCC
+Decision Tree,1.0,1.0,1.0,1.0,1.0,1.0
+Logistic Regression,1.0,1.0,1.0,1.0,1.0,1.0
+Naive Bayes,0.9507772020725389,0.9975,0.9073170731707317,1.0,0.9514066496163683,0.9061577959823071
+Random Forest (Ensemble),1.0,1.0,1.0,1.0,1.0,1.0
+XGBoost (Ensemble),1.0,1.0,1.0,1.0,1.0,1.0
+kNN,1.0,1.0,1.0,1.0,1.0,1.0
