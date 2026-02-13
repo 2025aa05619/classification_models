@@ -1,4 +1,4 @@
-# ML Classification Models + Streamlit Demo
+# Machine Learning Classification Models and Streamlit Demo
 
 ## Problem statement
 Build and compare multiple machine learning classification models on a single dataset, evaluate them with standard metrics, and deploy an interactive Streamlit app that lets users upload test data and view model performance (metrics, confusion matrix, classification report).
@@ -21,7 +21,7 @@ This project downloads the mushroom dataset from UCI repository (dataset_full.cs
 ### Comparison table
 Metrics below are from a single hold-out test split (`test_size=0.2`, `random_state=42`). Re-run `model/model_training.py` to reproduce.
 
-ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC
+Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC
 ---|---:|---:|---:|---:|---:|---:
 Logistic Regression | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000
 Decision Tree | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000
@@ -31,7 +31,7 @@ Random Forest (Ensemble) | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000
 XGBoost (Ensemble) | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000
 
 ### Observations
-ML Model Name | Observation about model performance
+Model Name | Observation about model performance
 ---|---
 Logistic Regression | Perfect performance across all metrics; well-suited for this linearly separable dataset.
 Decision Tree | Achieves perfect classification on test set; dataset features enable clean splits.
@@ -42,7 +42,7 @@ XGBoost (Ensemble) | Perfect performance with gradient boosting; handles complex
 
 ## Repository structure
 ```
-ML_Classification_Models_Comparison/
+classification_models/
 │-- streamlit_app.py
 │-- requirements.txt
 │-- README.md
@@ -56,7 +56,7 @@ ML_Classification_Models_Comparison/
 ## How to run
 1) Install dependencies:
 ```bash
-cd "ML_Classification_Models_Comparison"
+cd "classification_models"
 python -m venv .venv
 source .venv/bin/activate   # (Windows: .venv\\Scripts\\activate)
 pip install -r requirements.txt
