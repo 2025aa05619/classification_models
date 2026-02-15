@@ -28,7 +28,7 @@ def _format_metric(value: Any) -> str:
 def _get_trained_models_and_baseline_metrics(random_state: int = 42):
     existing = load_artifacts(ARTIFACTS_DIR)
     if existing is not None:
-        print("Loaded existing trained models and metrics from artifacts.")
+        print("Loaded trained models and metrics from artifacts.")
         models, metrics_df = existing
         return models, metrics_df
 
@@ -38,7 +38,7 @@ def _get_trained_models_and_baseline_metrics(random_state: int = 42):
 def _read_uploaded_csv(upload) -> pd.DataFrame:
     df = pd.read_csv(upload)
     if df.empty:
-        raise ValueError("Uploaded CSV is empty.")
+        raise ValueError("Uploaded CSV is blank.")
     return df
 
 
@@ -57,9 +57,9 @@ def _plot_confusion_matrix(cm, labels):
         yticklabels=labels,
         ax=ax,
     )
-    ax.set_xlabel("Predicted")
-    ax.set_ylabel("Actual")
-    ax.set_title("Confusion Matrix")
+    ax.set_xlabel("Predicted:")
+    ax.set_ylabel("Actual:")
+    ax.set_title("Confusion Matrix:")
     st.pyplot(fig, clear_figure=True)
 
 
@@ -67,11 +67,11 @@ def main():
     bundle = load_dataset_from_csv(
         Path(__file__).parent / "model" / "dataset_full.csv",
     )
-    st.set_page_config(page_title="ML Classification Models Demo", layout="wide")
+    st.set_page_config(page_title="Classification Models:", layout="wide")
 
     st.title("Classification Models: Training, Evaluation, Deployment (Streamlit)")
-    st.caption(f"Dataset: **{bundle.name}** (UCI Machine Learning Repository)")
-    st.caption("Use **Download sample test CSV** button in the sidebar to get a sample CSV file to evaluate a selected model.")
+    st.caption(f"Dataset: **{bundle.name}** (UCI ML Repository)")
+    st.caption("Use **Download sample test CSV** button in the sidebar to get a sample CSV file to evaluate a model.")
 
     trained_models, baseline_metrics_df = _get_trained_models_and_baseline_metrics()
 
@@ -152,10 +152,10 @@ def main():
             missing = [c for c in bundle.X.columns if c not in X_test.columns]
             extra = [c for c in X_test.columns if c not in bundle.X.columns]
             if missing:
-                st.error(f"Missing required feature columns: {missing[:8]}{'...' if len(missing) > 8 else ''}")
+                st.error(f"Required feature columns are missing - columns: {missing[:8]}{'...' if len(missing) > 8 else '',}")
                 return
             if extra:
-                st.warning(f"Ignoring extra columns not used by the model: {extra[:8]}{'...' if len(extra) > 8 else ''}")
+                st.warning(f"Ignoring additional columns not used by the model: {extra[:8]}{'...' if len(extra) > 8 else ''}")
                 X_test = X_test[bundle.X.columns]
             else:
                 X_test = X_test[bundle.X.columns]
